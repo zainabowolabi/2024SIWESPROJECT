@@ -1,0 +1,716 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name, .price, .icons {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header-icons i {
+    color: black;
+    font-size: 20px;
+    stroke: black;
+}
+
+.header-icons i:hover {
+    stroke: #333; /* Example hover color */
+    color: #333;
+}
+/* Style for menu link */
+.menu-link {
+    font-weight: bold; /* Make text bold */
+    color: black; /* Text color */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.menu-link:hover {
+    color: rgb(71, 71, 71); /* Change color on hover */
+}
+
+/* Hide the dropdown by default */
+.menu-dropdown .dropdown-list {
+    display: none;
+    position: absolute; /* Ensure it pops up over the content */
+    background-color: white;
+    list-style-type: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin-top: 5px;
+}
+
+/* Show dropdown on hover */
+.menu-dropdown:hover .dropdown-list {
+    display: block; /* Show dropdown on hover */
+}
+
+.menu-dropdown .dropdown-list li {
+    margin-bottom: 10px;
+}
+
+.menu-dropdown .dropdown-list li a {
+    text-decoration: none;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    margin: 10px;
+}
+
+/* Style for contact link */
+.contact-link {
+    text-decoration: none; 
+    font-weight: bold; /* Make text bold */
+    color: black; /* Text color */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: color 0.3s; /* Smooth transition for color change */
+    margin-left: 20px; /* Add some space between menu and contact */
+}
+
+.contact-link:hover {
+    color: rgb(71, 71, 71); /* Change color on hover */
+}
+
+.wishlist,
+.cart {
+    position: relative; /* For absolute positioning of the count */
+    margin-left: 15px; /* Space between icons */
+}
+
+.wishlist-count,
+.cart-count {
+    position: absolute;
+    top: -5px; /* Adjust position as needed */
+    right: -10px; /* Adjust position as needed */
+    background-color: pink;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+
+/* Hover effect for the dropdown links */
+.menu-dropdown .dropdown-list li a:hover {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Show the dropdown when 'Menu' is clicked */
+.menu-dropdown.active .dropdown-list {
+    display: block;
+}
+
+
+
+.contact-wrapper {
+    width: 100%; /* Full width of the viewport */
+    border-bottom: 1px solid #ddd; /* Border line */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+    padding: 0 20px; /* Optional: Adjust padding as needed */
+    margin: 0; /* Ensure no margin affecting width */
+}
+.contact-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align to the left */
+    padding-bottom: 5px;
+    width: 100%;
+    padding-left: 300px; /* Push the items right without affecting the line */
+}
+
+.contact-info p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.contact-info i {
+    margin-right: 5px;
+}
+
+.contact-info span {
+    margin: 0 10px;
+    color: #333;
+}
+
+.logo-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px; /* Padding around the container */
+    width: 100%; /* Ensure the container takes the full width */
+    position: relative; /* Relative positioning for the entire container */
+}
+
+.logo {
+    flex: 1;
+    position: relative;
+    left: 5%; /* Move the logo 5% from the left edge */
+    width: 150px; /* Set a specific width for the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+nav {
+    flex: 1; /* Allow navigation to take up remaining space */
+    text-align: center;
+}
+
+nav ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Display menu items horizontally */
+    justify-content: center; /* Center the menu items */
+    align-items: center; /* Align items vertically in the center */
+}
+
+nav ul li {
+    margin: 0 20px; /* Space between menu items */
+}
+
+.icons {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    right: 10%; /* Move the icons 5% from the right edge */
+}
+
+.icons i {
+    margin-left: 25px; /* Space between icons */
+    font-size: 21px; /* Increase icon size */
+    cursor: pointer;
+    color: white; /* Default icon color */
+    stroke: black; /* Add stroke color */
+    -webkit-text-stroke: 1px black; /* For hollow effect on webkit browsers */
+}
+
+.icons i:hover {
+    color: rgb(110, 94, 94); /* Change color on hover */
+}
+
+
+
+.hero img {
+    width: 100%;
+    height: auto;
+}
+
+.promo {
+    padding: 20px;
+    text-align: center;
+}
+
+.promo h2 {
+    text-align: left;
+    margin: 8px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.product {
+    position: relative;
+    padding: 15px; /* Adjusted padding for uniformity */
+    border: 1px solid transparent;
+    transition: border 0.3s ease;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    display: flex; /* Flexbox for aligning content */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Space out items */
+    height: 300px; /* Set a fixed height for consistency */
+}
+
+.product:hover {
+    border: 1px solid #ccc;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product .product-name {
+    font-size: 14px;
+    margin: 5px 0; /* Reduced margin for consistent spacing */
+    color: #333;
+}
+
+.price {
+    font-weight: bold;
+    color: rgb(230, 68, 68);
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 10px;
+}
+
+.discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.iconProducts {
+    margin-top: auto; /* Push icons to the bottom */
+    display: flex;
+    justify-content: space-around;
+}
+
+.iconProducts i {
+    cursor: pointer;
+    font-size: 20px; /* Adjust size here */
+}
+
+.iconProducts i.fas.fa-heart {
+    color: pink; /* Make the heart solid pink */
+}
+
+.iconProducts i.fas.fa-shopping-cart {
+    color: grey; /* Change shopping cart color */
+}
+.iconProducts i.fas.fa-heart:hover {
+    color: rgb(247, 38, 83);
+}
+/* This class will be added dynamically to keep heart red */
+.iconProducts i.fas.fa-heart.clicked {
+    color: rgb(247, 38, 83);; /* This class will keep heart red when clicked */
+}
+
+.new-products {
+    padding: 20px;
+    text-align: center;
+}
+
+.new-products h2 {
+    text-align: left;
+}
+
+.newPrice {
+    font-weight: bold;
+    color: rgb(26, 24, 24);
+    margin: 5px 0;
+    font-size:12px;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: left;
+    font-family: sans-serif; /* Keep your chosen font */
+    font-size: 12px;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-columns .column {
+    width: 14%;
+    padding-bottom: 20px; /* Space at the bottom */
+    min-height: 100px; /* Set a minimum height for uniformity */
+}
+
+.footer-columns h4 {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-columns .column p {
+    margin: 5px 0; /* Space between paragraphs */
+}
+.payment-section {
+    background-color: #ffffff;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    padding: 20px 0; /* Adds vertical padding */
+    height: 80px; /* Adjust this value for desired height */
+    box-sizing: border-box; /* Ensures padding is included in height calculation */
+}
+
+.payment-info {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center aligns the content */
+}
+
+.payment-info p {
+    margin: 0;
+    margin-right: 30px; /* Space between text and logos */
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.payment-logo {
+    margin-right: 24px; /* Space between logos */
+    width: 60px; /* Adjust this value for desired size */
+    height: auto; /* Maintain aspect ratio */
+}
+.bottom-footer {
+    background-color: #333;
+    text-align: center;
+    padding: 10px;
+    font-size: 11px;
+    border-top: 1px solid #444;
+}
+
+/* Modal Background */
+.login-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+/* Form Elements */
+.input-field {
+    margin: 12px 0;
+    text-align: left;
+}
+
+.input-field label {
+    font-size: 12px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-field input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.extra-options {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #555;
+}
+
+/* Create Account */
+p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+p a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Style for the search bar popup */
+.search-popup {
+    display: none; /* Hidden initially */
+    position: absolute;
+    top: 80px; /* Adjust this based on your header height */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+/* Search Input Field */
+#search-bar {
+    width: 100%; /* Make the input take full width */
+    padding: 8px;
+    border: 1px solid #ccc;
+    width: 600px;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding and border in width */
+    margin-bottom: 10px; /* Add space below the input field */
+}
+/* Style the search bar to make it longer */
+#searchInput {
+    padding: 8px;
+    width: 100%; /* Make it full width */
+    max-width: 500px; /* Control the max width */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    display: block;
+    margin: 10px auto; /* Center the input */
+}
+
+
+/* Search Button */
+#search-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%; /* Make the button take full width */
+}
+
+#search-btn:hover {
+    background-color: #535151;
+}
+
+
+/* Optional: Dim background when search is active */
+.dimmed-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+
+.wishlist-popup, .cart-popup {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 100;
+    border-radius: 5px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item p {
+    margin: 0;
+}
+
+.quantity {
+    margin-right: 10px;
+}
+
+.price {
+    color: #e60000;
+}
+
+.remove-item {
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.cart-total {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-empty {
+    display: none;
+    text-align: center;
+    color: #666;
+    margin-top: 1rem;
+}
+
+button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e60000;
+}
+
+.product-result {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.product-result button {
+    margin: 5px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.product-result button a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Hero Image */
+.hero-image {
+    width: 100vw; /* Make sure it takes the full viewport width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image covers the container */
+    position: relative; /* Allow for positioning within parent */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr); /* Change to 4 columns for medium screens */
+    }
+
+    .product {
+        height: auto; /* Allow product height to adjust */
+    }
+}
+
+@media (max-width: 800px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Change to 2 columns for smaller screens */
+    }
+
+    .contact-info {
+        flex-direction: column; /* Stack contact info vertically */
+        padding-left: 0; /* Remove padding for smaller screens */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .icons {
+        display: flex; /* Ensure icons are displayed in a row */
+        justify-content: center; /* Center icons on smaller screens */
+        flex-wrap: wrap; /* Allow icons to wrap if necessary */
+        margin-top: 10px; /* Add some space above icons */
+    }
+
+    .logo-menu {
+        flex-direction: column; /* Stack logo and menu vertically */
+        align-items: center; /* Center items */
+        margin-bottom: 10px; /* Space below logo-menu */
+    }
+
+    /* New style for positioning store logo and icons */
+    .store-logo {
+        order: -1; /* Move logo to the top */
+        margin-bottom: 10px; /* Space below the logo */
+    }
+}
+
+@media (max-width: 500px) {
+    .product-name {
+        font-size: 12px; /* Reduce font size for very small screens */
+    }
+
+    .price {
+        font-size: 11px; /* Reduce price font size */
+    }
+
+    .contact-info p {
+        font-size: 12px; /* Smaller text for contact info */
+    }
+}

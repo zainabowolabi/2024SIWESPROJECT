@@ -1,0 +1,103 @@
+{
+    "saleProducts": [
+        {
+            "id":1,
+            "name": "WAW Multi-Purpose Soap",
+            "originalPrice": "₦500.00",
+            "currentPrice": "₦350.00",
+            "image": "images/waw-multi-purpose-soap.png",
+            "discount": "30%",
+            "inStock": true
+        },
+        {
+            "id":2,
+            "name": "Eva Bathing Soap",
+            "originalPrice": "₦500.00",
+            "currentPrice": "₦350.00",
+            "image": "images/eva-bathing-soap.png",
+            "discount": "15%",
+            "inStock": true
+        },
+        {
+            "id":3,
+            "name": "2Sure Dishwashing Liquid",
+            "originalPrice": "₦950.00",
+            "currentPrice": "₦800.00",
+            "image": "images/2sure-dishwashing-liquid.png",
+            "discount": "16%",
+            "inStock": true
+        },
+        {
+            "id":4,
+            "name": "So Klin Detergent",
+            "originalPrice": "₦500.00",
+            "currentPrice": "₦350.00",
+            "image": "images/so-klin-detergent.png",
+            "discount": "17%",
+            "inStock": true
+        },
+        {
+            "id":5,
+            "name": "Sunlight 2 in 1 Handwashing Powder",
+            "originalPrice": "₦1600.00",
+            "currentPrice": "₦1250.00",
+            "image": "images/2sure-dishwashing-liquid.png",
+            "discount": "13%",
+            "inStock": true
+        },
+        {
+            "id":6,
+            "name": "Viva Plus Detergent Powder",
+            "originalPrice": "₦1500.00",
+            "currentPrice": "₦1300.00",
+            "image": "images/viva-plus-detergent-powder.png",
+            "discount": "30%",
+            "inStock": true
+        }
+
+    ],
+    "newProducts": [
+        {
+            "id":7,
+            "name": "Cleanmax Sparkle Anti-Bacterial Hand Wash",
+            "price": "₦600.00",
+            "image": "images/cleanmax.png",
+            "inStock": true
+        },
+        {
+            "id":8,
+            "name": "Familia Toilet Tissue",
+            "price": "₦600.00",
+            "image": "images/familia-tissue.png",
+            "inStock": true
+        },
+        {
+            "id":9,
+            "name": "Laundry Basket",
+            "price": "₦600.00",
+            "image": "images/laundry-basket.png",
+            "inStock": true
+        },
+        {
+            "id":10,
+            "name": "Black Facial Mask",
+            "price": "₦600.00",
+            "image": "images/black-facial-mask.png",
+            "inStock": true
+        },
+        {
+            "id":11,
+            "name": "Cerave Acne Control Cleanser",
+            "price": "₦600.00",
+            "image": "images/cerave-cleanser.png",
+            "inStock": true
+        },
+        {
+            "id":12,
+            "name": "Olay Lotion",
+            "price": "₦600.00",
+            "image": "images/olay-lotion.png",
+            "inStock": true
+        }
+    ]
+}

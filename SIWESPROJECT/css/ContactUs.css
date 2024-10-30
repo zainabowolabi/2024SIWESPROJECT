@@ -1,0 +1,48 @@
+/* Contact Us Page Styles */
+.contact-section {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto; /* Center the section */
+    text-align: left; /* Align text to the left */
+}
+
+.contact-section h1 {
+    text-align: center; /* Center the title */
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+}
+
+label {
+    margin: 10px 0 5px; /* Space between label and input */
+    font-weight: bold; /* Make labels bold */
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 15px; /* Space below each input */
+    font-size: 14px; /* Font size */
+}
+
+button {
+    padding: 10px;
+    background-color: rgb(230, 68, 68); /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color change */
+}
+
+button:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+.required {
+    color: red; /* Change color to red */
+}
