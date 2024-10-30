@@ -1,0 +1,37 @@
+ <!-- Login Modal -->
+ <div id="loginModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="mt-3 text-center">
+            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modalTitle">Login</h3>
+            <button id="closeModalBtn" class="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-600">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="mt-2 px-7 py-3">
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-4">
+                    <input type="email" placeholder="Email" class="w-full px-3 py-2 border rounded-md" required>
+                    <input type="password" placeholder="Password" class="w-full px-3 py-2 border rounded-md" required>
+                    <button type="submit" class="w-full bg-emerald-500 text-white py-2 rounded-md hover:bg-emerald-600">Login</button>
+                    <p class="mt-2 text-sm">
+                        Don't have an account? 
+                        <a href="#" id="switchToSignup" class="text-emerald-500 hover:text-emerald-600">Sign up</a>
+                    </p>
+                </form>
+                <!-- Signup Form -->
+                <form id="signupForm" class="space-y-4 hidden">
+                    <input type="text" placeholder="Full Name" class="w-full px-3 py-2 border rounded-md" required>
+                    <input type="email" placeholder="Email" class="w-full px-3 py-2 border rounded-md" required>
+                    <input type="password" placeholder="Password" class="w-full px-3 py-2 border rounded-md" required>
+                    <input type="password" placeholder="Confirm Password" class="w-full px-3 py-2 border rounded-md" required>
+                    <button type="submit" class="w-full bg-emerald-500 text-white py-2 rounded-md hover:bg-emerald-600">Sign Up</button>
+                    <p class="mt-2 text-sm hidden" id="loginLink">
+                        Already have an account? 
+                        <a href="#" id="switchToLogin" class="text-emerald-500 hover:text-emerald-600">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

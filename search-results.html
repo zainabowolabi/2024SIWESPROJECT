@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Juchi Stores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <div id="header"></div>
+    <div id="modal-container"></div>
+    
+    <div class="container mx-auto px-4 py-8">
+        <button onclick="history.back()" class="flex items-center text-emerald-600 hover:text-emerald-700 transition-colors mb-8">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Go Back
+        </button>
+
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Search Results</h1>
+            <p class="text-gray-600" id="search-summary"></p>
+        </div>
+
+        <div class="mb-8">
+            <h3 class="text-1xl font-bold text-emerald-400 mb-0 flex items-center space-x-2">
+                <span class="text-emerald-400" id="total-count"></span> 
+                <span>Total products in result</span>
+            </h3>
+        </div>
+        
+
+        <!-- Results Grid -->
+        <div id="search-results" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+
+        <!-- No Results Message (hidden by default) -->
+        <div id="no-results" class="hidden text-center py-16">
+            <i class="fas fa-search text-gray-400 text-5xl mb-4"></i>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Hey, check your spelling.</h2>
+            <p class="text-gray-600">We couldn't find any products matching your search.</p>
+        </div>
+    </div>
+
+    
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Get the search query from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('q');
+        
+        // Update the search summary
+        const searchSummary = document.getElementById('search-summary');
+        searchSummary.textContent = `Showing results for "${searchQuery}"`;
+
+        
+
+
+        // Get the products array from localStorage
+        const results = JSON.parse(localStorage.getItem('searchResults') || '[]');
+        const resultsContainer = document.getElementById('search-results');
+        const noResults = document.getElementById('no-results');
+
+        function parseNairaPrice(priceString) {
+            return parseFloat(priceString.replace(/[^0-9.-]+/g, ""));
+        }
+
+// takes a product object and "normalizes" it
+        function normalizeProduct(product) {
+            // Determine if it's a sale product by checking for currentPrice
+            const isSale = !!product.currentPrice;
+            
+            let normalizedProduct = {
+                ...product,
+                id: product.id,
+                name: product.name,
+                image: product.image
+            };
+
+            if (isSale) {
+                // For sale items
+                normalizedProduct.currentPrice = parseNairaPrice(product.currentPrice);
+                normalizedProduct.originalPrice = parseNairaPrice(product.originalPrice);
+                normalizedProduct.price = product.currentPrice; // Keep the formatted price for display
+            } else {
+                // For regular items
+                const parsedPrice = parseNairaPrice(product.price);
+                normalizedProduct.currentPrice = parsedPrice;
+                normalizedProduct.price = product.price;
+            }
+
+            return normalizedProduct;
+        }
+
+        if (results.length > 0) {
+            // Display results
+            resultsContainer.innerHTML = results.map(product => {
+                const isSale = !!product.currentPrice;
+                let priceHTML = isSale
+                    ? `<span class="text-gray-400 line-through">${product.originalPrice}</span>
+                    <span class="text-emerald-600 font-bold">${product.currentPrice}</span>`
+                    : `<span class="text-emerald-600 font-bold">${product.price}</span>`;
+                //edit the product card
+                // Return the product card HTML
+        return `
+            <div class="bg-white rounded-lg shadow-md overflow-hidden group w-60 flex flex-col h-full"> <!-- Full height flex column -->
+                <div class="relative mb-2">
+                    ${isSale ? `<span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-md text-sm">-${product.discount}</span>` : ''}
+                    <div class="p-4 flex items-center justify-center h-64 bg-white-100"> <!-- Fixed height for image -->
+                        <img src="${product.image}" alt="${product.name}" 
+                             class="max-h-full h-64 object-contain group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                </div>
+                <div class="p-4 flex-grow"> <!-- Allow this div to grow -->
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">${product.name}</h3>
+                    <div class="flex items-center space-x-2 mb-4">
+                        ${priceHTML}
+                    </div>
+                </div>
+                <div class="flex justify-between items-center p-4"> <!-- Buttons at the bottom -->
+                    <button class="wishlist-btn text-gray-600 hover:text-red-500 transition-colors">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <button class="add-to-cart bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700 transition-colors" data-id="${product.id}">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+            // Add event listeners to each Add to Cart button
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = Number(e.target.getAttribute('data-id'));
+                    const product = results.find(item => item.id === productId);
+
+                    if (product) {
+                        const normalizedProduct = normalizeProduct(product);
+                        const cartProduct = {
+                            id: normalizedProduct.id,
+                            name: normalizedProduct.name,
+                            currentPrice: normalizedProduct.currentPrice,
+                            price: normalizedProduct.price,
+                            image: normalizedProduct.image
+                        };
+                        
+                        window.storeUtils.store.cart.add(cartProduct);
+                        window.storeUtils.showNotification(`${product.name} added to cart!`);
+                    } else {
+                        console.error('Product not found:', productId);
+                    }
+                });
+            });
+
+            // Add event listeners to wishlist buttons
+            const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = Number(e.target.closest('.group').querySelector('.add-to-cart').getAttribute('data-id'));
+                    const product = results.find(item => item.id === productId);
+                    
+                    if (product) {
+                        const normalizedProduct = normalizeProduct(product);
+                        window.storeUtils.store.wishlist.toggle(normalizedProduct);
+                        window.storeUtils.showNotification(`${normalizedProduct.name} ${window.storeUtils.store.wishlist.isInWishlist(normalizedProduct.id) ? 'added to' : 'removed from'} wishlist!`);
+                    }
+                });
+            });
+        } else {
+            // Show no results message
+            resultsContainer.classList.add('hidden');
+            noResults.classList.remove('hidden');
+        }
+        // Assuming 'results' is your array of product objects
+const totalCount = results.length; // Get the count of products
+
+// Now you can display the total count
+const totalCountElement = document.getElementById('total-count'); // Ensure this matches your HTML
+totalCountElement.textContent = `${totalCount}`; // Display the count
+    });
+    </script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+</body>
+</html>
